@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zona Zen - Animaciones Relajantes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: linear-gradient(45deg, #0f172a, #1e293b, #334155, #475569);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease-in-out infinite;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Floating Orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(1px);
+      animation: float-orb 15s infinite ease-in-out;
+    }
+
+    .orb:nth-child(1) {
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.6), rgba(59, 130, 246, 0.1));
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .orb:nth-child(2) {
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.5), rgba(139, 92, 246, 0.1));
+      top: 60%;
+      right: 15%;
+      animation-delay: -3s;
+    }
+
+    .orb:nth-child(3) {
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle, rgba(34, 197, 94, 0.6), rgba(34, 197, 94, 0.1));
+      bottom: 30%;
+      left: 30%;
+      animation-delay: -6s;
+    }
+
+    .orb:nth-child(4) {
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.5), rgba(236, 72, 153, 0.1));
+      top: 40%;
+      right: 40%;
+      animation-delay: -9s;
+    }
+
+    @keyframes float-orb {
+      0%, 100% {
+        transform: translateY(0px) translateX(0px) scale(1);
+        opacity: 0.6;
+      }
+      25% {
+        transform: translateY(-50px) translateX(30px) scale(1.1);
+        opacity: 0.8;
+      }
+      50% {
+        transform: translateY(-30px) translateX(-20px) scale(0.9);
+        opacity: 0.4;
+      }
+      75% {
+        transform: translateY(20px) translateX(40px) scale(1.05);
+        opacity: 0.7;
+      }
+    }
+
+    /* Breathing Circle */
+    .breathe-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 200px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: breathe 4s ease-in-out infinite;
+    }
+
+    .breathe-circle::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+      border-radius: 50%;
+      animation: inner-breathe 4s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 0.4;
+      }
+    }
+
+    @keyframes inner-breathe {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(0.7);
+      }
+    }
+
+    /* Ripple Effect */
+    .ripple {
+      position: absolute;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      animation: ripple-effect 3s linear infinite;
+    }
+
+    @keyframes ripple-effect {
+      0% {
+        transform: scale(0);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    /* Geometric Shapes */
+    .rotating-shape {
+      position: absolute;
+      animation: rotate-shape 20s linear infinite;
+    }
+
+    .triangle {
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-bottom: 35px solid rgba(59, 130, 246, 0.3);
+      top: 70%;
+      left: 80%;
+      animation-delay: 0s;
+    }
+
+    .square {
+      width: 30px;
+      height: 30px;
+      background: rgba(139, 92, 246, 0.3);
+      top: 15%;
+      right: 20%;
+      animation-delay: -5s;
+    }
+
+    .hexagon {
+      width: 40px;
+      height: 23px;
+      background: rgba(34, 197, 94, 0.3);
+      position: relative;
+      top: 80%;
+      left: 20%;
+      animation-delay: -10s;
+    }
+
+    .hexagon:before,
+    .hexagon:after {
+      content: "";
+      position: absolute;
+      width: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+    }
+
+    .hexagon:before {
+      bottom: 100%;
+      border-bottom: 12px solid rgba(34, 197, 94, 0.3);
+    }
+
+    .hexagon:after {
+      top: 100%;
+      border-top: 12px solid rgba(34, 197, 94, 0.3);
+    }
+
+    @keyframes rotate-shape {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Falling Particles */
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      animation: fall 12s linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+
+    /* Wave Animation */
+    .wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(90deg, 
+        rgba(59, 130, 246, 0.1) 0%,
+        rgba(139, 92, 246, 0.1) 25%,
+        rgba(34, 197, 94, 0.1) 50%,
+        rgba(236, 72, 153, 0.1) 75%,
+        rgba(59, 130, 246, 0.1) 100%
+      );
+      background-size: 200% 100%;
+      animation: wave-move 6s ease-in-out infinite;
+      clip-path: polygon(0 20px, 100% 0px, 100% 100%, 0% 100%);
+    }
+
+    @keyframes wave-move {
+      0%, 100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    /* Control Panel */
+    .control-panel {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 20px;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .control-panel:hover {
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .speed-control {
+      margin: 10px 0;
+    }
+
+    .speed-control input {
+      width: 100%;
+      margin: 5px 0;
+    }
+
+    /* Zen Text */
+    .zen-text {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1.2rem;
+      text-align: center;
+      animation: fade-in-out 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes fade-in-out {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Control Panel -->
+  <div class="control-panel text-white">
+    <h3 class="text-lg font-bold mb-4"><i class="fas fa-cog mr-2"></i>Controles Zen</h3>
+    
+    <div class="speed-control">
+      <label class="block text-sm mb-1">Velocidad General</label>
+      <input type="range" id="globalSpeed" min="0.5" max="3" step="0.1" value="1" class="w-full">
+    </div>
+    
+    <div class="speed-control">
+      <label class="block text-sm mb-1">Intensidad Partículas</label>
+      <input type="range" id="particleIntensity" min="10" max="100" step="10" value="50" class="w-full">
+    </div>
+    
+    <button id="toggleFullscreen" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg mt-4 w-full transition-colors">
+      <i class="fas fa-expand mr-2"></i>Pantalla Completa
+    </button>
+    
+    <button id="newColors" class="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg mt-2 w-full transition-colors">
+      <i class="fas fa-palette mr-2"></i>Nuevos Colores
+    </button>
+  </div>
+
+  <!-- Zen Messages -->
+  <div class="zen-text" id="zenText">
+    Respira profundo... Relájate...
+  </div>
+
+  <!-- Breathing Circle -->
+  <div class="breathe-circle" id="breatheCircle"></div>
+
+  <!-- Floating Orbs -->
+  <div class="orb"></div>
+  <div class="orb"></div>
+  <div class="orb"></div>
+  <div class="orb"></div>
+
+  <!-- Geometric Shapes -->
+  <div class="rotating-shape triangle"></div>
+  <div class="rotating-shape square"></div>
+  <div class="rotating-shape hexagon"></div>
+
+  <!-- Wave -->
+  <div class="wave"></div>
+
+  <!-- Particles Container -->
+  <div id="particlesContainer"></div>
+
+  <script>
+    // Zen messages array
+    const zenMessages = [
+      "Respira profundo... Relájate...",
+      "Encuentra tu centro interior...",
+      "Deja que la calma te envuelva...",
+      "Solo existe este momento...",
+      "Fluye como el agua...",
+      "Tu mente está en paz...",
+      "Libera todas las tensiones...",
+      "Eres uno con el universo...",
+      "Siente la serenidad...",
+      "El tiempo se detiene aquí..."
+    ];
+
+    let currentMessageIndex = 0;
+    let globalSpeedMultiplier = 1;
+    let particleCount = 50;
+
+    // Change zen messages
+    function updateZenMessage() {
+      const zenText = document.getElementById('zenText');
+      zenText.textContent = zenMessages[currentMessageIndex];
+      currentMessageIndex = (currentMessageIndex + 1) % zenMessages.length;
+    }
+
+    // Create falling particles
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + 'vw';
+      particle.style.animationDuration = (Math.random() * 8 + 4) / globalSpeedMultiplier + 's';
+      particle.style.animationDelay = Math.random() * 2 + 's';
+      
+      document.getElementById('particlesContainer').appendChild(particle);
+      
+      setTimeout(() => {
+        if (particle.parentNode) {
+          particle.remove();
+        }
+      }, 15000 / globalSpeedMultiplier);
+    }
+
+    // Create ripples at random positions
+    function createRipple() {
+      const ripple = document.createElement('div');
+      ripple.className = 'ripple';
+      ripple.style.left = Math.random() * 100 + 'vw';
+      ripple.style.top = Math.random() * 100 + 'vh';
+      ripple.style.width = '10px';
+      ripple.style.height = '10px';
+      ripple.style.animationDuration = (3 / globalSpeedMultiplier) + 's';
+      
+      document.body.appendChild(ripple);
+      
+      setTimeout(() => {
+        if (ripple.parentNode) {
+          ripple.remove();
+        }
+      }, 3000 / globalSpeedMultiplier);
+    }
+
+    // Update animation speeds
+    function updateAnimationSpeeds() {
+      const root = document.documentElement;
+      root.style.setProperty('--global-speed', globalSpeedMultiplier);
+      
+      // Update existing animations
+      const orbs = document.querySelectorAll('.orb');
+      orbs.forEach(orb => {
+        orb.style.animationDuration = (15 / globalSpeedMultiplier) + 's';
+      });
+      
+      const breatheCircle = document.getElementById('breatheCircle');
+      breatheCircle.style.animationDuration = (4 / globalSpeedMultiplier) + 's';
+    }
+
+    // Generate random colors
+    function getRandomColor() {
+      const colors = [
+        'rgba(59, 130, 246, 0.3)',   // Blue
+        'rgba(139, 92, 246, 0.3)',   // Purple
+        'rgba(34, 197, 94, 0.3)',    // Green
+        'rgba(236, 72, 153, 0.3)',   // Pink
+        'rgba(245, 158, 11, 0.3)',   // Amber
+        'rgba(20, 184, 166, 0.3)',   // Teal
+        'rgba(239, 68, 68, 0.3)',    // Red
+        'rgba(168, 85, 247, 0.3)'    // Violet
+      ];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    // Change colors randomly
+    function changeColors() {
+      const orbs = document.querySelectorAll('.orb');
+      orbs.forEach(orb => {
+        const color1 = getRandomColor().replace('0.3', '0.6');
+        const color2 = getRandomColor().replace('0.3', '0.1');
+        orb.style.background = `radial-gradient(circle, ${color1}, ${color2})`;
+      });
+    }
+
+    // Event listeners
+    document.getElementById('globalSpeed').addEventListener('input', (e) => {
+      globalSpeedMultiplier = parseFloat(e.target.value);
+      updateAnimationSpeeds();
+    });
+
+    document.getElementById('particleIntensity').addEventListener('input', (e) => {
+      particleCount = parseInt(e.target.value);
+    });
+
+    document.getElementById('toggleFullscreen').addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    });
+
+    document.getElementById('newColors').addEventListener('click', changeColors);
+
+    // Initialize animations
+    setInterval(updateZenMessage, 8000 / globalSpeedMultiplier);
+    setInterval(createRipple, 2000);
+    
+    // Create particles based on intensity
+    setInterval(() => {
+      if (Math.random() * 100 < particleCount) {
+        createParticle();
+      }
+    }, 200);
+
+    // Hide control panel after 10 seconds of inactivity
+    let controlPanelTimeout;
+    const controlPanel = document.querySelector('.control-panel');
+    
+    function showControlPanel() {
+      controlPanel.style.opacity = '1';
+      controlPanel.style.pointerEvents = 'auto';
+      clearTimeout(controlPanelTimeout);
+      controlPanelTimeout = setTimeout(() => {
+        controlPanel.style.opacity = '0.3';
+        controlPanel.style.pointerEvents = 'none';
+      }, 10000);
+    }
+
+    document.addEventListener('mousemove', showControlPanel);
+    document.addEventListener('click', showControlPanel);
+    
+    // Initial setup
+    showControlPanel();
+    updateZenMessage();
+  </script>
+</body>
+</html>
